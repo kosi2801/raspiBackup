@@ -5,13 +5,13 @@
 #  Download any latest file available on any raspiBackup github repository branch into current directory
 #
 #  Example to download latest raspiBackup.sh from master branch:
-#  curl -s https://raw.githubusercontent.com/framps/raspiBackup/master/scripts/raspiBackupDownloadFromGit.sh | bash -s -- master
+#  curl -s https://raw.githubusercontent.com/kosi2801/raspiBackup/master/scripts/raspiBackupDownloadFromGit.sh | bash -s -- master
 #
 #  Example to download latest raspiBackupWrapper.sh from master branch:
-#  curl -s https://raw.githubusercontent.com/framps/raspiBackup/master/scripts/raspiBackupDownloadFromGit.sh | bash -s -- master helper/raspiBackupWrapper.sh
+#  curl -s https://raw.githubusercontent.com/kosi2801/raspiBackup/master/scripts/raspiBackupDownloadFromGit.sh | bash -s -- master helper/raspiBackupWrapper.sh
 #
 #  Example to download latest raspiBackupInstallUI.sh from beta branch:
-#  curl -s https://raw.githubusercontent.com/framps/raspiBackup/master/scripts/raspiBackupDownloadFromGit.sh | bash -s -- master beta/raspiBackupInstallUI.sh
+#  curl -s https://raw.githubusercontent.com/kosi2801/raspiBackup/master/scripts/raspiBackupDownloadFromGit.sh | bash -s -- master beta/raspiBackupInstallUI.sh
 #
 #  Visit http://www.linux-tips-and-tricks.de/raspiBackup for latest code and other details
 #
@@ -80,7 +80,7 @@ DATE="$(base64 -d <<< "$DATE")"
 branch="$1"
 shift
 
-downloadURL="https://raw.githubusercontent.com/framps/raspiBackup/$branch/$DOWNLOAD_FILE"
+downloadURL="https://raw.githubusercontent.com/kosi2801/raspiBackup/$branch/$DOWNLOAD_FILE"
 targetFilename="$(basename "$DOWNLOAD_FILE")"
 
 rm -f "$targetFilename"
@@ -106,9 +106,9 @@ if (( $updateGitInfo )); then
 	echo "--- Retrieving commit meta data of $DOWNLOAD_FILE from $branch ..."
 	TOKEN=""															# Personal token to get better rate limits
 	if [[ -n $TOKEN ]]; then
-		HTTP_CODE="$(curl -sq -w "%{http_code}" -o $jsonFile -H "Authorization: token $TOKEN" -s https://api.github.com/repos/framps/raspiBackup/commits/$branch)"
+		HTTP_CODE="$(curl -sq -w "%{http_code}" -o $jsonFile -H "Authorization: token $TOKEN" -s https://api.github.com/repos/kosi2801/raspiBackup/commits/$branch)"
 	else
-		HTTP_CODE="$(curl -sq -w "%{http_code}" -o $jsonFile -s https://api.github.com/repos/framps/raspiBackup/commits/$branch)"
+		HTTP_CODE="$(curl -sq -w "%{http_code}" -o $jsonFile -s https://api.github.com/repos/kosi2801/raspiBackup/commits/$branch)"
 	fi
 
 	rc=$?
